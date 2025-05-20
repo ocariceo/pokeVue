@@ -1,0 +1,409 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+/* --- Estilos de la pantalla de bienvenida --- */
+.pokedex-welcome-container {
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.pikachu-image {
+    width: 200px;
+    height: auto;
+    margin-bottom: 25px;
+}
+
+.pokedex-welcome-container h1 {
+    font-size: 2.2em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.pokedex-welcome-container p {
+    font-size: 1.05em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.cta-button { /* General Call To Action button style */
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #F2505D; /* Original red */
+}
+
+.cta-button:hover {
+    background-color: #E03C4A; /* Darker red */
+}
+
+/* --- Estilos del Cargador --- */
+.loader-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(240, 240, 240, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.pokeball-loader {
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Estilos de la Lista de Pokémon --- */
+.pokedex-list-container {
+    background-color: white;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    max-height: 700px;
+}
+
+.search-bar-container {
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    position: relative; /* For potential future elements like clear button */
+}
+
+.search-bar-container svg {
+    width: 20px;
+    height: 20px;
+    fill: #aaa;
+    margin-right: 12px;
+}
+
+.search-bar-container input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    background-color: transparent;
+    color: #333;
+}
+.search-bar-container input::placeholder {
+    color: #bbb;
+}
+
+.pokemon-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.pokemon-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.pokemon-list-item:last-child {
+    border-bottom: none;
+}
+.pokemon-list-item:hover {
+    background-color: #f9f9f9;
+}
+
+.pokemon-name {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.favorite-star svg {
+    width: 24px;
+    height: 24px;
+    fill: #ccc;
+    transition: fill 0.2s ease, transform 0.2s ease;
+}
+.favorite-star.is-favorite svg {
+    fill: #FFD700;
+}
+.favorite-star:hover svg {
+    transform: scale(1.1);
+}
+
+
+.tabs-container {
+    display: flex;
+    border-top: 1px solid #eee;
+    background-color: #fdfdfd;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 15px 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+.tab-button svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    fill: currentColor;
+}
+
+.tab-button.active {
+    background-color: #F2505D;
+    color: white;
+    font-weight: bold;
+}
+.tab-button:not(.active):hover {
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+/* --- Estilos del Empty State Container --- */
+.empty-state-container {
+    flex-grow: 1; /* Takes up the space where list would be */
+    display: flex; /* Hidden by default, JS will change */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #555; /* Subtitle color */
+}
+.empty-state-container h2 {
+    font-size: 2em; /* "Uh-oh!" */
+    color: #333; /* Darker color for title */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.empty-state-container p {
+    font-size: 1em; /* "You look lost..." */
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+.empty-state-button { /* "Go back home" button */
+    background-color: #EF5350; /* Red from image */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 50px; /* Matches cta-button */
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.empty-state-button:hover {
+    background-color: #E53935; /* Darker red */
+}
+
+
+/* --- Estilos del Modal de Detalle --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-container {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    max-width: 380px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-image-area {
+    position: relative;
+    background-color: #73C5EA;
+}
+
+.modal-image-area img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.modal-close-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: #A0D3F5;
+    border: 1.5px solid white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.modal-close-icon svg {
+    width: 12px;
+    height: 12px;
+}
+.modal-close-icon svg path {
+    stroke: white;
+}
+
+.modal-info-area {
+    padding: 5px 25px 10px 25px;
+    color: #333;
+}
+
+.info-row {
+    font-size: 1em;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.info-row:last-child {
+    border-bottom: none;
+}
+.info-row span {
+    font-weight: normal;
+}
+
+.modal-actions-area {
+    padding: 15px 25px 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-share-btn {
+    background-color: #EF5350;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.95em;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.modal-share-btn:hover {
+    background-color: #E53935;
+}
+
+.modal-favorite-icon-container {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.modal-favorite-icon-container:hover {
+    background-color: #e0e0e0;
+}
+.modal-favorite-icon-container .modal-favorite-icon {
+    width: 22px;
+    height: 22px;
+    fill: #BDBDBD;
+}
+.modal-favorite-icon-container.is-favorite .modal-favorite-icon {
+    fill: #FFC107;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .pokedex-welcome-container { padding: 20px; }
+    .pikachu-image { width: 150px; margin-bottom: 20px; }
+    .pokedex-welcome-container h1 { font-size: 1.8em; }
+    .pokedex-welcome-container p { font-size: 0.95em; }
+    .cta-button { padding: 12px 30px; font-size: 1em; }
+    .pokeball-loader { width: 60px; height: 60px; }
+
+    .pokedex-list-container {
+        max-width: 100%;
+        width: 100%;
+        height: calc(100vh - 40px);
+        border-radius: 12px;
+    }
+    .search-bar-container { padding: 15px; }
+    .pokemon-list-item { padding: 12px 15px; }
+    .pokemon-name { font-size: 1em; }
+    .favorite-star svg { width: 22px; height: 22px; }
+    .tab-button { font-size: 0.9em; padding: 12px 8px; }
+    .tab-button svg { width: 18px; height: 18px; }
+    .modal-container { max-width: calc(100% - 20px); }
+    .empty-state-container h2 { font-size: 1.8em; }
+    .empty-state-container p { font-size: 0.9em; }
+    .empty-state-button { padding: 10px 25px; font-size: 0.95em; }
+}
+@media (max-height: 600px) {
+    .pokedex-list-container {
+         max-height: calc(100vh - 40px);
+    }
+}
