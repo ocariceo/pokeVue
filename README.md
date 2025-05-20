@@ -44,8 +44,8 @@ pokemon-app-vue/
 ## Uso de la aplicación
 1. En la pantalla de bienvenida, haz clic en "Comenzar".
 2. Explora la lista de Pokémones o utiliza la barra de búsqueda para encontrar un Pokémon en específico.
-3. Haz clic en la estrella para marcar/desmarcar un Pokémon como favorito.
-4. Haz clic en el nombre de un Pokémon para ver sus detalles.
+3. Haz click en la estrella para seleccionar un Pokémon como favorito.
+4. Haz click en el nombre de un Pokémon para ver sus detalles.
 5. En la vista de detalles:
    - Puedes seleccionar al un Pokémon como favorito.
    - Puedes compartir la información haciendo clic en "Compartir con amigos"
