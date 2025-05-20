@@ -36,6 +36,7 @@ pokemon-app-vue/
 
 ## Cómo ejecutar la aplicación
 1. Clonar o descargar los archivos del proyecto.
+2. Navegar hasta /src:
    - Es posible usar un servidor web local usando los siguientes comandos:
      - Python: `python -m http.server 8000`
      - Node.js: `npx serve`
