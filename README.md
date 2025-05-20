@@ -9,7 +9,7 @@ Este desarrollo se realizó en el marco de un ejercicio para Global66.
 
 ## Características
 - Contiene una pantalla de bienvenida con introducción a la Pokédex.
-- Despliega una lista de Pokémon con búsqueda.
+- Despliega una lista de Pokémones con una herramienta de búsqueda.
 - Permite filtrar la totalidad de los Pokémon o solamente filtrar los favoritos.
 - Entrega el detalle de las características de cada Pokémon.
 - El usuario puede seleccionar los Pokémon como favoritos.
@@ -49,7 +49,7 @@ pokemon-app-vue/
 3. Haz click en la estrella para seleccionar un Pokémon como favorito.
 4. Haz click en el nombre de un Pokémon para ver sus detalles.
 5. En la vista de detalles:
-   - Puedes seleccionar al un Pokémon como favorito.
+   - Puedes seleccionar distintos Pokémones como favoritos.
    - Puedes compartir la información haciendo clic en "Compartir con amigos"
 6. Utiliza las pestañas "Todos" y "Favoritos" para filtrar la lista.
 
