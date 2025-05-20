@@ -22,6 +22,7 @@ Este desarrollo se realizó en el marco de un ejercicio para Global66.
 - HTML5 y CSS3
 - PokeAPI (https://pokeapi.co)
 - LocalStorage para persistencia de datos
+- Vitest(https://vitest.dev/) para testing
 
 ## Estructura de archivos
 ```
@@ -63,3 +64,55 @@ La aplicación tiene una arquitectura modular y ligera:
 - La función de compartir copia los datos al portapapeles.
 - Los colores de fondo en la vista de detalles cambian según el tipo del Pokémon
 
+## Test Unitarios
+
+Este proyecto incluye pruebas unitarias usando `Vitest` y `@vue/test-utils`.
+
+## Ejemplo: `PokemonCard.vue`
+
+El componente `PokemonCard` recibe un objeto `pokemon` como prop y muestra su nombre e imagen.
+
+## Test: `PokemonCard.spec.js`
+
+```js
+import { describe, it, expect } from 'vitest'
+import { mount } from '@vue/test-utils'
+import PokemonCard from '../PokemonCard.vue'
+
+describe('PokemonCard.vue', () => {
+  it('renders the Pokémon name and image correctly', () => {
+    const pokemon = {
+      name: 'Pikachu',
+      image: 'https://example.com/pikachu.png',
+    }
+
+    const wrapper = mount(PokemonCard, {
+      props: { pokemon },
+    })
+
+    expect(wrapper.find('h2').text()).toBe('Pikachu')
+    const img = wrapper.find('img')
+    expect(img.attributes('src')).toBe('https://example.com/pikachu.png')
+    expect(img.attributes('alt')).toBe('Pikachu')
+  })
+})
+```
+## Instalación de dependencias para testing
+
+npm install -D vitest @vue/test-utils
+
+## Archivo de configuración vitest.config.js
+```
+import { defineConfig } from 'vitest/config'
+
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'jsdom',
+  },
+})
+```
+
+## Ejecutar pruebas
+
+npm run test
