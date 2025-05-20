@@ -102,7 +102,7 @@ describe('PokemonCard.vue', () => {
 npm install -D vitest @vue/test-utils
 
 ## Archivo de configuración vitest.config.js
-```
+```js
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
