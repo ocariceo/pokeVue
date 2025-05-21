@@ -31,7 +31,7 @@ pokemon-app-vue/
 │   ├── index.html          # Archivo HTML principal
 │   ├── styles.css          # Estilos CSS de la aplicación
 │   ├── app.js              # Lógica principal y componentes Vue
-│   └── components/         # Componentes Vue (incluidos en app.js)
+│   └── components/         # Componentes Vue (incluidos en app.js y los archivos para el unit test)
 ```
 
 ## Cómo ejecutar la aplicación
